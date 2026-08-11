@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :require_login
+
   def index
     weekdays = [
       "Segunda",
@@ -31,6 +33,12 @@ class HomeController < ApplicationController
 
     @workout_day = WorkoutDay.find_by(name: selected_day)
 
-    @exercises = @workout_day&.exercises || []
+    @exercises = current_user.exercises.includes(:workout_days)
+
+    if @workout_day
+      @exercises = @exercises.joins(:workout_days).where(workout_days: { id: @workout_day.id })
+    end
+
+    @exercises = @exercises.order(:created_at)
   end
 end

@@ -1,11 +1,13 @@
 class ExercisesController < ApplicationController
+  before_action :require_login
+
   def new
     @exercise = Exercise.new
     @workout_days = WorkoutDay.all
   end
 
   def create
-    @exercise = Exercise.new(exercise_params)
+    @exercise = current_user.exercises.build(exercise_params)
 
     if @exercise.save
       workout_day_ids = params[:exercise][:workout_day_ids]
@@ -22,7 +24,7 @@ class ExercisesController < ApplicationController
   end
 
   def toggle_completion
-    @exercise = Exercise.find(params[:id])
+    @exercise = current_user.exercises.find(params[:id])
 
     completion = @exercise.exercise_completions.find_by(
       completed_on: Date.current

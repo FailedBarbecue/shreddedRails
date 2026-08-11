@@ -1,0 +1,37 @@
+<div class="max-w-md mx-auto mt-20 p-8 rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl">
+  <h1 class="text-3xl font-black mb-6">Create account</h1>
+
+  <%= form_with model: @user, local: true do |form| %>
+    <% if @user.errors.any? %>
+      <div class="mb-4 text-red-400">
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-4">
+      <%= form.label :name, class: "block mb-2 text-sm" %>
+      <%= form.text_field :name, class: "w-full rounded-lg px-4 py-2 bg-zinc-800 border border-zinc-700" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :email, class: "block mb-2 text-sm" %>
+      <%= form.email_field :email, class: "w-full rounded-lg px-4 py-2 bg-zinc-800 border border-zinc-700" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :password, class: "block mb-2 text-sm" %>
+      <%= form.password_field :password, class: "w-full rounded-lg px-4 py-2 bg-zinc-800 border border-zinc-700" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :password_confirmation, class: "block mb-2 text-sm" %>
+      <%= form.password_field :password_confirmation, class: "w-full rounded-lg px-4 py-2 bg-zinc-800 border border-zinc-700" %>
+    </div>
+
+    <%= form.submit "Create account", class: "w-full rounded-lg bg-white text-black font-bold py-3 cursor-pointer" %>
+  <% end %>
+</div>

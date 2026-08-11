@@ -1,0 +1,25 @@
+<div class="max-w-md mx-auto mt-20 p-8 rounded-2xl bg-zinc-900 border border-zinc-800 shadow-2xl">
+  <h1 class="text-3xl font-black mb-6">Log in</h1>
+
+  <% if flash[:alert] %>
+    <p class="mb-4 text-red-400"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_with url: login_path, scope: :session, local: true do |form| %>
+    <div class="mb-4">
+      <%= form.label :email, class: "block mb-2 text-sm" %>
+      <%= form.email_field :email, class: "w-full rounded-lg px-4 py-2 bg-zinc-800 border border-zinc-700" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :password, class: "block mb-2 text-sm" %>
+      <%= form.password_field :password, class: "w-full rounded-lg px-4 py-2 bg-zinc-800 border border-zinc-700" %>
+    </div>
+
+    <%= form.submit "Log in", class: "w-full rounded-lg bg-white text-black font-bold py-3 cursor-pointer" %>
+  <% end %>
+
+  <p class="mt-4 text-sm text-zinc-400">
+    No account yet? <%= link_to "Create one", new_user_path, class: "text-white underline" %>
+  </p>
+</div>
