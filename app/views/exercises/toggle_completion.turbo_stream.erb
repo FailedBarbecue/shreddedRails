@@ -1,0 +1,5 @@
+<%= turbo_stream.replace(
+      dom_id(@exercise, :completion),
+      partial: "completion_button",
+      locals: { exercise: @exercise }
+    ) %>

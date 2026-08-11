@@ -1,0 +1,20 @@
+<%= turbo_frame_tag dom_id(exercise, :completion) do %>
+
+  <%= button_to toggle_completion_exercise_path(exercise),
+    method: :post,
+    class: "
+      w-16
+      rounded-2xl
+      bg-zinc-900
+      border
+      border-zinc-800
+      hover:bg-zinc-800
+      transition
+      text-2xl
+    " do %>
+
+    <%= exercise.completed_today? ? "✓" : "X" %>
+
+  <% end %>
+
+<% end %>

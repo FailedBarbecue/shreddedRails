@@ -1,0 +1,91 @@
+<div class="w-screen min-h-screen bg-black text-white px-10 py-8">
+
+  <div class="max-w-4xl mx-auto">
+
+    <h1 class="text-4xl font-black mb-8">
+      Novo Exercício
+    </h1>
+
+    <%= form_with model: @exercise do |f| %>
+
+      <div class="space-y-5">
+
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name,
+            class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
+          %>
+        </div>
+
+        <div>
+          <%= f.label :muscle %>
+          <%= f.text_field :muscle,
+            class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
+          %>
+        </div>
+
+        <div>
+          <%= f.label :equipment %>
+          <%= f.text_field :equipment,
+            class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
+          %>
+        </div>
+
+        <div>
+          <%= f.label :difficulty %>
+          <%= f.select :difficulty,
+            ["Fácil", "Médio", "Difícil"],
+            {},
+            class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
+          %>
+        </div>
+
+        <div>
+          <%= f.label :video_url %>
+          <%= f.text_field :video_url,
+            class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
+          %>
+        </div>
+
+        <div>
+          <p class="font-bold mb-3">
+            Dias da semana
+          </p>
+
+          <div class="space-y-2">
+            <% @workout_days.each do |day| %>
+
+              <label class="flex items-center gap-3">
+
+                <%= check_box_tag(
+                  "exercise[workout_day_ids][]",
+                  day.id
+                ) %>
+
+                <%= day.name %>
+
+              </label>
+
+            <% end %>
+          </div>
+        </div>
+
+        <%= f.submit "Criar Exercício",
+          class: "
+            w-full
+            bg-white
+            text-black
+            py-4
+            rounded-2xl
+            font-bold
+            cursor-pointer
+          "
+        %>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
