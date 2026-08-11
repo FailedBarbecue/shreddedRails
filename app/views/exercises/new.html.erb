@@ -2,9 +2,15 @@
 
   <div class="max-w-4xl mx-auto">
 
-    <h1 class="text-4xl font-black mb-8">
-      Novo Exercício
-    </h1>
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-4xl font-black">
+        Novo Exercício
+      </h1>
+
+      <%= link_to "← Voltar", root_path,
+        class: "rounded-2xl border border-zinc-700 bg-zinc-900 px-4 py-3 font-semibold text-white hover:bg-zinc-800 transition"
+      %>
+    </div>
 
     <%= form_with model: @exercise do |f| %>
 
@@ -36,13 +42,6 @@
           <%= f.select :difficulty,
             ["Fácil", "Médio", "Difícil"],
             {},
-            class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
-          %>
-        </div>
-
-        <div>
-          <%= f.label :video_url %>
-          <%= f.text_field :video_url,
             class: "w-full rounded-xl bg-zinc-900 border border-zinc-800 p-3"
           %>
         </div>

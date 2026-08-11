@@ -51,8 +51,7 @@ class ExercisesController < ApplicationController
       :name,
       :muscle,
       :equipment,
-      :difficulty,
-      :video_url
+      :difficulty
     )
   end
 end

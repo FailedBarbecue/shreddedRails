@@ -2,7 +2,6 @@ one:
   name: MyString
   muscle: Legs
   equipment: Barbell
-  video_url: https://example.com/exercise
   difficulty: Intermediate
   user: one
 
@@ -10,6 +9,5 @@ two:
   name: MyString
   muscle: Chest
   equipment: Bodyweight
-  video_url: https://example.com/exercise-2
   difficulty: Beginner
   user: two

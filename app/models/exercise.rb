@@ -1,7 +1,7 @@
 class Exercise < ApplicationRecord
   belongs_to :user
 
-  validates :name, :muscle, :equipment, :video_url, :difficulty, presence: true
+  validates :name, :muscle, :equipment, :difficulty, presence: true
   has_many :workout_exercises
   has_many :workout_days, through: :workout_exercises
   has_many :exercise_completions, dependent: :destroy

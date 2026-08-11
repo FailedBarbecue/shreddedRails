@@ -5,8 +5,8 @@ class ExercisesControllerTest < ActionDispatch::IntegrationTest
     alice = User.create!(name: "Alice", email: "alice2@example.com", password: "password123", password_confirmation: "password123")
     bob = User.create!(name: "Bob", email: "bob2@example.com", password: "password123", password_confirmation: "password123")
 
-    alice_exercise = alice.exercises.create!(name: "Squat", muscle: "Legs", equipment: "Barbell", video_url: "https://example.com/squat", difficulty: "Intermediate")
-    bob_exercise = bob.exercises.create!(name: "Push Up", muscle: "Chest", equipment: "Bodyweight", video_url: "https://example.com/push-up", difficulty: "Beginner")
+    alice_exercise = alice.exercises.create!(name: "Squat", muscle: "Legs", equipment: "Barbell", difficulty: "Intermediate")
+    bob_exercise = bob.exercises.create!(name: "Push Up", muscle: "Chest", equipment: "Bodyweight", difficulty: "Beginner")
 
     post login_path, params: { session: { email: alice.email, password: "password123" } }
     follow_redirect!
@@ -28,7 +28,6 @@ class ExercisesControllerTest < ActionDispatch::IntegrationTest
         name: "Deadlift",
         muscle: "Back",
         equipment: "Barbell",
-        video_url: "https://example.com/deadlift",
         difficulty: "Advanced",
         workout_day_ids: [WorkoutDay.first.id]
       }

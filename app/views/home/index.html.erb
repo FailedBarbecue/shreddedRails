@@ -215,24 +215,6 @@
 
             <div class="flex gap-4 mt-8">
 
-                <a
-                  href="<%= exercise.video_url %>"
-                  target="_blank"
-                  class="
-                    flex-1
-                    text-center
-                    bg-white
-                    text-black
-                    py-4
-                    rounded-2xl
-                    font-black
-                    hover:opacity-80
-                    transition
-                  "
-                >
-                  Ver exercício
-                </a>
-
                 <%= turbo_frame_tag dom_id(exercise, :completion) do %>
 
                   <%= button_to toggle_completion_exercise_path(exercise),
